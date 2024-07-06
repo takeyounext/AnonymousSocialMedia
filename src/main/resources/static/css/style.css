@@ -1,0 +1,9 @@
+.login-box-top{
+    margin-top: 80px;
+}
+
+.login-error-toast-position{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
