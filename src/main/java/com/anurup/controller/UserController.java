@@ -16,17 +16,14 @@ public class UserController {
 	@Autowired
 	private UserRepository repo;
 	
-	
-	@GetMapping("/login")
-	public ModelAndView home(ModelAndView modelandview) {
-		modelandview.setViewName("index");
-		return modelandview;
-	}
-	
 	@GetMapping("/")
 	public ModelAndView login() {
-		
 		return new ModelAndView("redirect:/login");
+	}
+	
+	@GetMapping("/login")
+	public ModelAndView home() {
+		return new ModelAndView("index");
 	}
 	
 	@GetMapping("/register")
