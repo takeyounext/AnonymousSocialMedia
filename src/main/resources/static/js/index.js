@@ -22,7 +22,7 @@ function validateRegistrationForm(){
     var inputFirstName = $("#inputFirstName").val();
     var inputLastName = $("#inputLastName").val();
     var inputDOB = $("#inputDOB").val();
-    var inputGender = $("#inputGender").val();
+    var inputGender = $('input[name="gender"]:checked').val();
     var inputMobileNo = $("#inputMobileNo").val();
     var inputEmail = $("#inputEmail").val();
     var inputPassword = $("#inputPassword").val();
@@ -56,7 +56,7 @@ function validateRegistrationForm(){
         }
     }
 
-    if(inputGender == ""){
+    if(inputGender == undefined){
         toastShow(gendarErrMsg);
         $("#inputGender").focus();
         return false;
@@ -71,6 +71,11 @@ function validateRegistrationForm(){
         $("#inputEmail").focus();
         return false;
     }
+	if(!isEmail(inputEmail)){
+		toastShow(invalidEmailErrMsg);
+        $("#inputEmail").focus();
+        return false;
+	}
     if(inputPassword == ""){
         toastShow(passwordErrMsg);
         $("#inputPassword").focus();
@@ -116,8 +121,7 @@ function formSubmit() {
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
     var form = $(this);
-    //var actionUrl = form.attr('action');
-    var actionUrl = "http://localhost:8080/register";
+    var actionUrl = form.attr('action');
     
     $.ajax({
         type: "POST",
@@ -125,14 +129,30 @@ function formSubmit() {
         data: form.serialize(), // serializes the form's elements.
         success: function(data)
         {
-          alert(data); // show response from the php script.
+          if(data =="SUCCESS"){
+			toastShow(successMsgUser,'S');
+			$("#formResetId").click();
+		  }else{
+			toastShow(successErrMsgUser);
+		  }
         }
     });
     
 });
 }
-function toastShow(msg){
+function toastShow(msg,type){
+	if(type == "S"){
+		$('#toastId').removeClass("text-bg-danger");
+		$('#toastId').addClass("text-bg-primary");
+	}else{
+		$('#toastId').addClass("text-bg-danger");
+		$('#toastId').removeClass("text-bg-primary");
+	}
     $("#toast-body").text(msg);
     $('.toast').toast("show");
 }
 
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}

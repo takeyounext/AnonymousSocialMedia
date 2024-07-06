@@ -2,8 +2,8 @@ package com.anurup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,12 +26,13 @@ public class UserController {
 	@GetMapping("/register")
 	public ModelAndView register(ModelAndView modelandview) {
 		modelandview.setViewName("views/register");
-		modelandview.addObject("login", new UserDetails());
+		modelandview.addObject("UserDetails", new UserDetails());
 		return modelandview;
 	}
 	
-	@PostMapping("/user")
-	public void user(@RequestBody UserDetails user) {
+	@PostMapping("/register")
+	public String register(@ModelAttribute UserDetails user) {
 		repo.save(user);
+		return "SUCCESS";
 	}
 }

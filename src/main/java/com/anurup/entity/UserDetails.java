@@ -1,6 +1,5 @@
 package com.anurup.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,9 +14,8 @@ public class UserDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "Name")
-	private String firstName = null;
-	private String middleName = null;
+	private String firstName;
+	private String middleName;
 	private String lastName;
 	private String dob;
 	private String gender;
@@ -82,7 +80,7 @@ public class UserDetails {
 		return mobNumber;
 	}
 
-	public void setPhNumber(String mobNumber) {
+	public void setMobNumber(String mobNumber) {
 		this.mobNumber = mobNumber;
 	}
 

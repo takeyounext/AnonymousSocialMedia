@@ -20,36 +20,36 @@
         <div class="card">
           <div class="card-body">
             <div class="col text-center fs-2 fw-semibold text-primary fst-italic py-1">Registration Form</div>
-            <form action="user" method="POST"  id="formRegistration">
+            <form th:action="@{/register}" method="POST"  id="formRegistration" th:object=${UserDetails}>
             <div class="row">
               <div class="col-md-4">
                 <label for="First Name" class="form-label">First Name<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="firstName"  id="inputFirstName" placeholder="Enter first name">
+                <input type="text" class="form-control" name="firstName" th:field="*{firstName}" id="inputFirstName" placeholder="Enter first name">
               </div>
               <div class="col-md-4">
                 <label for="Middle Name" class="form-label">Middle Name</label>
-                <input type="text" class="form-control" name="middleName"  id="inputMiddleName" placeholder="Enter Middle name">
+                <input type="text" class="form-control" name="middleName" th:field="*{middleName}" id="inputMiddleName" placeholder="Enter Middle name">
               </div>
               <div class="col-md-4">
                 <label for="Last Name" class="form-label">Last Name<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="lastName"  id="inputLastName" placeholder="Enter last name">
+                <input type="text" class="form-control" name="lastName" th:field="*{lastName}" id="inputLastName" placeholder="Enter last name">
               </div>
               <div class="col-md-6">
                 <label for="Date of birth" class="form-label">DOB<span class="text-danger">*</span></label>
-                <input type="date" class="form-control" name="dob"  id="inputDOB">
+                <input type="date" class="form-control" name="dob" th:field="*{dob}" id="inputDOB">
               </div>
 
               <div class="col-md-6">
-                <label for="Gendar" class="col-form-label col-sm-2 pt-0">Gender<span class="text-danger">*</span></label>
+                <label for="Gendar" class="form-label">Gender<span class="text-danger">*</span></label>
                 <div class="col-sm-10">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" } value="male">
+                    <input class="form-check-input" type="radio" name="gender" th:field="*{gender}" value="male">
                     <label class="form-check-label" for="Gendar">
                       Male
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender"  value="female">
+                    <input class="form-check-input" type="radio" name="gender" th:field="*{gender}" value="female">
                     <label class="form-check-label" for="Gendar">
                       Female
                     </label>
@@ -59,7 +59,7 @@
 
               <div class="col-md-6">
                 <label for="Mobile Number" class="form-label">Mobile Number<span class="text-danger">*</span></label>
-                <input type="tel" class="form-control" name="phNumber"  id="inputMobileNo" placeholder="Enter mobile no">
+                <input type="text" class="form-control" name="mobNumber" th:field="*{mobNumber}" id="inputMobileNo" placeholder="Enter mobile no">
               </div>
               <div class="col-md-6">
                 <div class="row">
@@ -70,11 +70,11 @@
                     <a href="#"><label for="Email varification" class="form-label float-right">Verify</label></a>
                   </div>
                 </div>
-                <input type="email" class="form-control" name="email"  id="inputEmail" placeholder="Enter email address">
+                <input type="email" class="form-control" name="email" th:field="*{email}" id="inputEmail" placeholder="Enter email address">
               </div>
               <div class="col-md-6">
                 <label for="Password" class="form-label">Password<span class="text-danger">*</span></label>
-                <input type="password" class="form-control" name="password"  id="inputPassword" placeholder="Enter password">
+                <input type="password" class="form-control" name="password" th:field="*{password}" id="inputPassword" placeholder="Enter password">
               </div>
               <div class="col-md-6">
                 <label for="Confirm Password" class="form-label">Confirm Password<span class="text-danger">*</span></label>
@@ -82,33 +82,60 @@
               </div>
               <div class="col-12">
                 <label for="Address line 1" class="form-label">Address<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="address1"  id="inputAddress" placeholder="Enter address line 1">
+                <input type="text" class="form-control" name="address1" th:field="*{address1}" id="inputAddress" placeholder="Enter address line 1">
               </div>
               <div class="col-12">
                 <label for="Address line 2" class="form-label">Address 2</label>
-                <input type="text" class="form-control" name = "address2"  id="inputAddress1" placeholder="Enter address line 2">
+                <input type="text" class="form-control" name = "address2" th:field="*{address2}" id="inputAddress1" placeholder="Enter address line 2">
               </div>
               <div class="col-md-6">
                 <label for="City" class="form-label">City<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="city"  id="inputCity" placeholder="Enter city name">
+                <input type="text" class="form-control" name="city" th:field="*{city}" id="inputCity" placeholder="Enter city name">
               </div>
               <div class="col-md-4">
                 <label for="State" class="form-label">State<span class="text-danger">*</span></label>
-                <select id="inputState" class="form-select" name="state" >
+                <select id="inputState" class="form-select" name="state" th:field="*{state}">
                   <option value="-1">Choose...</option>
-                  <option>...</option>
+                    <option th:value="@{Andhra Pradesh}">Andhra Pradesh</option>
+					<option th:value="@{Arunachal}">Arunachal</option>
+					<option th:value="@{Assam}">Assam</option>
+					<option th:value="@{Bihar}">Bihar</option>
+					<option th:value="@{Chhattisgarh}">Chhattisgarh</option>
+					<option th:value="@{Goa}">Goa</option>
+					<option th:value="@{Gujarat}">Gujarat</option>
+					<option th:value="@{Haryana}">Haryana</option>
+					<option th:value="@{Himachal}">Himachal</option>
+					<option th:value="@{Jharkhand}">Jharkhand</option>
+					<option th:value="@{Karnataka}">Karnataka</option>
+					<option th:value="@{Kerala}">Kerala</option>
+					<option th:value="@{Madhya}">Madhya</option>
+					<option th:value="@{Maharashtra}">Maharashtra</option>
+					<option th:value="@{Manipur}">Manipur</option>
+					<option th:value="@{Meghalaya}">Meghalaya</option>
+					<option th:value="@{Mizoram}">Mizoram</option>
+					<option th:value="@{Nagaland}">Nagaland</option>
+					<option th:value="@{Odisha}">Odisha</option>
+					<option th:value="@{Punjab}">Punjab</option>
+					<option th:value="@{Rajasthan}">Rajasthan</option>
+					<option th:value="@{Sikkim}">Sikkim</option>
+					<option th:value="@{Tamil Nadu}">Tamil Nadu</option>
+					<option th:value="@{Telangana}">Telangana</option>
+					<option th:value="@{Tripura}">Tripura</option>
+					<option th:value="@{Uttar Pradesh}">Uttar Pradesh</option>
+					<option th:value="@{Uttarakhand}">Uttarakhand</option>
+					<option th:value="@{West Bengal}">West Bengal</option>
                 </select>
               </div>
               <div class="col-md-2">
                 <label for="Zip" class="form-label">Zip<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="zip" id="inputZipCode"  placeholder="Zip code">
+                <input type="text" class="form-control" name="zip" th:field="*{zip}" id="inputZipCode"  placeholder="Zip code">
               </div>
               <div class="col-12">
                   <label class="form-check-label fs-6 text-danger" for="gridCheck">* fields are mandatory.</label>
               </div>
               <div class="text-center">
-                <button type="Submit" class="btn btn-primary">Sign in</button>
-                <button type="Reset" class="btn btn-primary">Reset</button>
+                <button type="submit" class="btn btn-primary" onclick="return validateRegistrationForm()">Sign in</button>
+                <button type="Reset" class="btn btn-primary" id="formResetId">Reset</button>
               </div>
               <div class="text-center mt-2">Already Register? <a href="../">Login</a></div>
             </div>
@@ -118,8 +145,7 @@
       </div>
     </div>
   </div>
-  <div class="toast align-items-center text-bg-danger border-0 login-error-toast-position" role="alert"
-        aria-live="assertive" aria-atomic="true">
+  <div class="toast align-items-center border-0 login-error-toast-position" id="toastId" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body fw-bolder" id="toast-body">
             </div>
