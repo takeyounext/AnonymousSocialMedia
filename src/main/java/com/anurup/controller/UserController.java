@@ -17,10 +17,16 @@ public class UserController {
 	private UserRepository repo;
 	
 	
-	@GetMapping("/")
+	@GetMapping("/login")
 	public ModelAndView home(ModelAndView modelandview) {
 		modelandview.setViewName("index");
 		return modelandview;
+	}
+	
+	@GetMapping("/")
+	public ModelAndView login() {
+		
+		return new ModelAndView("redirect:/login");
 	}
 	
 	@GetMapping("/register")
