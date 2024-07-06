@@ -26,6 +26,7 @@ public class UserController {
 	@GetMapping("/register")
 	public ModelAndView register(ModelAndView modelandview) {
 		modelandview.setViewName("views/register");
+		modelandview.addObject("login", new UserDetails());
 		return modelandview;
 	}
 	
