@@ -1,4 +1,4 @@
-package com.anurup.entity;
+package com.takeyounext.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

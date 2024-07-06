@@ -1,4 +1,4 @@
-package com.anurup.controller;
+package com.takeyounext.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.anurup.entity.UserDetails;
-import com.anurup.repository.UserRepository;
+import com.takeyounext.entity.UserDetails;
+import com.takeyounext.repository.UserRepository;
 
 @RestController
 public class UserController {

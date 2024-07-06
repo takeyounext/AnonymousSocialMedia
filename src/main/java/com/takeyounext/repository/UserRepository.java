@@ -1,8 +1,8 @@
-package com.anurup.repository;
+package com.takeyounext.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.anurup.entity.UserDetails;
+import com.takeyounext.entity.UserDetails;
 
 public interface UserRepository extends JpaRepository<UserDetails, Integer> {
 		
