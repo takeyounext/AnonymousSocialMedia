@@ -16,9 +16,9 @@ public class UserDetails {
 	private int id;
 
 	@Column(name = "Name")
-	private String firstName = null;
-	private String middleName = null;
-	private String lastName = null;
+	private String firstName;
+	private String middleName;
+	private String lastName;
 	private String dob;
 	private String gender;
 	private String mobNumber;
